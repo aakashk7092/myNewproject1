@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - First Aid</title>
+  <link rel="stylesheet" href="c.css">
+</head>
+<body>
+  <header>
+    
+    <div class="hero-section">
+      <h1>First Aid Quiz</h1>
+      <p>Test your first aid knowledge with our interactive quizzes!</p>
+    </div>
+  </header>
+  <nav>
+    <ul class="nav-bar">
+      <li><a href="index.html" class="nav-button">Home</a></li>
+      <li><a href="tutorial.html" class="nav-button">Tutorials</a></li>
+      <li><a href="quiz.html" class="nav-button">Quiz</a></li>
+      <li><a href="helpline.html" class="nav-button">Helpline</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="content-section">
+      <h2>Quiz</h2>
+      <form id="quiz-form">
+        <p>1. What is the first step in performing CPR?</p>
+        <label><input type="radio" name="q1" value="Check for breathing"> Check for breathing</label><br>
+        <label><input type="radio" name="q1" value="Start chest compressions"> Start chest compressions</label><br>
+        <label><input type="radio" name="q1" value="Call for help"> Call for help</label><br>
+
+        <p>2. How do you treat a minor burn?</p>
+        <label><input type="radio" name="q2" value="Apply ice"> Apply ice</label><br>
+        <label><input type="radio" name="q2" value="Rinse with cool water"> Rinse with cool water</label><br>
+        <label><input type="radio" name="q2" value="Apply butter"> Apply butter</label><br>
+
+        <button type="button" onclick="calculateScore()">Submit</button>
+      </form>
+      <div id="quiz-result" class="hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 First Aid Home. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function calculateScore() {
+      const answers = {
+        q1: "Check for breathing",
+        q2: "Rinse with cool water",
+      };
+      let score = 0;
+
+      const form = document.getElementById('quiz-form');
+      const resultDiv = document.getElementById('quiz-result');
+
+      Object.keys(answers).forEach((question) => {
+        const userAnswer = form[question].value;
+        if (userAnswer === answers[question]) {
+          score++;
+        }
+      });
+
+      resultDiv.innerHTML = `<h2>Your Score: ${score}/2</h2>`;
+      resultDiv.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
